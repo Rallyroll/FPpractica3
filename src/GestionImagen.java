@@ -17,19 +17,23 @@ public class GestionImagen {
                     VisorImagen.mostrar(imagen);
                     break;
                 case 3:
-                    // Aplicar espejo horizontal
+                    imagen.espejoHorizontal();
                     break;
                 case 4:
                     // Aplicar espejo vertical
+                    imagen.espejoVertical();
                     break;
                 case 5:
                     // Rotar 180º
+                    imagen.rotar180();
                     break;
                 case 6:
                     // Invertir colores
+                    imagen.invertirColores();
                     break;
                 case 7:
                     // Convertir a grises
+                    imagen.convertirAGrises();
                     break;
                 case 8:
                     // Guardar la imagen .txt
@@ -53,7 +57,7 @@ public class GestionImagen {
                 "7. Convertir a grises.\n" +
                 "8. Guardar la imagen en un fichero .txt.\n" +
                 "9. Cargar la imagen desde un fichero .txt.\n" +
-                "0. Salir.";
+                "0. Salir.\n";
         return Teclado.leerEntero(0,9, mensaje);
     }
 

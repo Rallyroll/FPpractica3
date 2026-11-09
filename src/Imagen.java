@@ -46,32 +46,72 @@ public class Imagen {
 
     // Métodos
     public void espejoHorizontal() {
+        //TODO Preguntar
 
+        Imagen copia = duplicar();
+
+        /*
+        int aux[][] = new int[ancho][alto];
+        for (int i = 0; i < ancho; i++) {
+            for (int j = 0; j < alto; j++) {
+                aux[i][j] = pixeles[i][j];
+            }
+        }
+         */
+        for (int i = 0; i < ancho ; i++) {
+            for (int j = 0; j < alto ; j++) {
+                pixeles[i][j] = copia.pixeles[ancho-1-i][j];
+            }
+        }
     }
 
     public void espejoVertical() {
-
+        for (int i = 0; i < ancho ; i++) {
+            int[] aux = new int[alto];
+            for (int j = 0; j < alto; j++) {
+                aux[j] = pixeles[i][j];
+            }
+            for (int j = 0; j < alto ; j++) {
+                pixeles[i][j] = aux[alto-1-j];
+            }
+        }
     }
 
     public void rotar180() {
-
+        espejoHorizontal();
+        espejoVertical();
     }
 
     public void invertirColores() {
-
+        for (int i = 0; i < numColores; i++) {
+            ColorRGB color = paleta.getColorRGB(i);
+            ColorRGB colorInv = new ColorRGB(255-color.getR(),255-color.getG(),255-color.getB());
+            paleta.setColorRGB(i, colorInv);
+        }
     }
 
     public void convertirAGrises() {
-
+        for (int i = 0; i < numColores; i++) {
+            ColorRGB color = paleta.getColorRGB(i);
+            int gris = (int) (0.299*color.getR()+0.587*color.getG()+0.114*color.getB());
+            ColorRGB colorGris = new ColorRGB(gris, gris, gris);
+            paleta.setColorRGB(i, colorGris);
+        }
     }
-    /*
     public Imagen duplicar() {
 
+        int aux[][] = new int[ancho][alto];
+        for (int i = 0; i < ancho; i++) {
+            for (int j = 0; j < alto; j++) {
+                aux[i][j] = pixeles[i][j];
+            }
+        }
+        Imagen copia = new Imagen(aux, paleta);
+        return copia;
     }
-
+/*
     public boolean equals(Imagen imagen) {
 
     }
-
-     */
+    */
 }

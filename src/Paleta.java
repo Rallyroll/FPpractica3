@@ -5,6 +5,7 @@ public class Paleta {
 
     public Paleta(int tamaño) {
         colores = new ColorRGB[tamaño];
+        this.tamaño = tamaño;
     }
 
     public void setColorRGB(int i, ColorRGB color) {
